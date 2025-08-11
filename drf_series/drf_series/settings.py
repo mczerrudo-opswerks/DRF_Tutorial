@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'api',
     'django_extensions',  # Optional: for additional management commands
     'rest_framework',  # Django REST Framework
+    'silk',  # Optional: for better admin interface django-silk
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'silk.middleware.SilkyMiddleware',  # Optional: for better admin interface django-silk
 ]
 
 ROOT_URLCONF = 'drf_series.urls'
