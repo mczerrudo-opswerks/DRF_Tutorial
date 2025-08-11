@@ -65,7 +65,7 @@ class OrderSerializer(serializers.ModelSerializer):
         )
 
 # Generic Serializer not tied to a specific model 
-class ProductInfoSerializer(serializers.ModelSerializer):
+class ProductInfoSerializer(serializers.Serializer):
     """
     get all the products, count of products, and max price
     """
