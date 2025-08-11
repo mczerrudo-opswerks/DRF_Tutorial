@@ -61,7 +61,11 @@ class OrderItem(models.Model):
     Order item model. Link the order to products
 
     """
-    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    order = models.ForeignKey(
+        Order, 
+        on_delete=models.CASCADE,
+        related_name='items'
+    )
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
 
