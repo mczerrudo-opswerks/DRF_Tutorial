@@ -21,6 +21,7 @@ class ProductListCreateAPIView(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
+    # Customizing permissions in a Generic View
     def get_permissions(self):
         self.permission_classes = [AllowAny]
         if self.request.method == 'POST':

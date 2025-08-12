@@ -1,7 +1,7 @@
 GET http://localhost:8000/products/ HTTP/1.1
 Host: localhost:8000
 
-###
+### This File uses the VS Code extension REST Client
 
 POST http://localhost:8000/products/ HTTP/1.1
 Host: localhost:8000
