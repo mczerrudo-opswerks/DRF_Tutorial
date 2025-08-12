@@ -1,0 +1,15 @@
+GET http://localhost:8000/products/ HTTP/1.1
+Host: localhost:8000
+
+###
+
+POST http://localhost:8000/products/ HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+
+{
+    "name": "New Product",
+    "price": 19.99,
+    "stock": 100,
+    "description": "A brand new product"
+}
