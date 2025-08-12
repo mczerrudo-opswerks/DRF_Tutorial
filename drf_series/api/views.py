@@ -15,13 +15,14 @@ from rest_framework.views import APIView
 from api.filters import ProductFilter, InStockFilterBackend
 from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination
 
 # Class based views for product list and create
 class ProductListCreateAPIView(generics.ListCreateAPIView):
     """
     List all products and create a new product
     """
-    queryset = Product.objects.all()
+    queryset = Product.objects.order_by('pk')
     serializer_class = ProductSerializer
     filterset_class = ProductFilter
     filter_backends = [
@@ -32,6 +33,13 @@ class ProductListCreateAPIView(generics.ListCreateAPIView):
     ]
     search_fields = ['name', 'description']  # Optional: Add search functionality
     ordering_fields = ['name', 'price', 'stock']  # Optional: Add ordering functionality
+
+    # Pagination Settings
+    pagination_class = PageNumberPagination
+    pagination_class.page_size = 2 # Optional: Set page size for pagination
+    pagination_class.page_query_param = 'pagenum'  # Optional: Set query param for pagination
+    pagination_class.page_size_query_param = 'page_size'  # Optional: Allow client to set page size
+    pagination_class.max_page_size = 6  # Optional: Set max page size
 
     # Customizing permissions in a Generic View
     def get_permissions(self):
