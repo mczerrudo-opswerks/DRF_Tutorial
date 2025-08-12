@@ -6,6 +6,7 @@ Host: localhost:8000
 POST http://localhost:8000/products/ HTTP/1.1
 Host: localhost:8000
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0OTc3MTA3LCJpYXQiOjE3NTQ5NzY4MDcsImp0aSI6ImVhYWNhNjZiODQ4NTQ3ZjdiMjY3YjRmY2MyMzg3MGVmIiwidXNlcl9pZCI6IjIifQ.HgrcfqDVhPgYcYh2B427w0JN4LYO9INRenZ8G_fuA4c
 
 {
     "name": "New Product",
@@ -13,3 +14,19 @@ Content-Type: application/json
     "stock": 100,
     "description": "A brand new product"
 }
+
+### JWT Authentication
+POST http://localhost:8000/api/token/ HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "test"
+}
+
+###
+GET http://localhost:8000/user-orders/ HTTP/1.1
+Host: localhost:8000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0OTc5MDA5LCJpYXQiOjE3NTQ5Nzg3MDksImp0aSI6IjcyN2E5MTg1NjE0NTQ0ZmE5OTY3NzhhYzZiMzk1MzZmIiwidXNlcl9pZCI6IjEifQ.9VcShNYKgrGcsG_tyHxv52LBxJy_LB8QhSDWHbVndjQ
+
