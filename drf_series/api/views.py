@@ -12,6 +12,7 @@ from rest_framework.permissions import (
     AllowAny,
 )
 from rest_framework.views import APIView
+from api.filters import ProductFilter
 
 # Class based views for product list and create
 class ProductListCreateAPIView(generics.ListCreateAPIView):
@@ -20,6 +21,7 @@ class ProductListCreateAPIView(generics.ListCreateAPIView):
     """
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    filterset_class = ProductFilter
 
     # Customizing permissions in a Generic View
     def get_permissions(self):

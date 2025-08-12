@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',  # Django REST Framework
     'silk',  # Optional: for better admin interface django-silk
     'drf_spectacular', # Optional: for OpenAPI schema generation
+    'django_filters', # Optional: for filtering support
 ]
 
 MIDDLEWARE = [
@@ -145,6 +146,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ],
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema', # Use drf-spectacular for OpenAPI schema generation
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
 # drf-spectacular settings
