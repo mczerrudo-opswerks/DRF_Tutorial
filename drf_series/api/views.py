@@ -13,6 +13,8 @@ from rest_framework.permissions import (
 )
 from rest_framework.views import APIView
 from api.filters import ProductFilter
+from rest_framework import filters
+from django_filters.rest_framework import DjangoFilterBackend
 
 # Class based views for product list and create
 class ProductListCreateAPIView(generics.ListCreateAPIView):
@@ -22,6 +24,13 @@ class ProductListCreateAPIView(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     filterset_class = ProductFilter
+    filter_backends = [
+        DjangoFilterBackend, 
+        filters.SearchFilter,
+        filters.OrderingFilter
+    ]
+    search_fields = ['name', 'description']  # Optional: Add search functionality
+    ordering_fields = ['name', 'price', 'stock']  # Optional: Add ordering functionality
 
     # Customizing permissions in a Generic View
     def get_permissions(self):
