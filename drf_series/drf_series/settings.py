@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_extensions',  # Optional: for additional management commands
     'rest_framework',  # Django REST Framework
     'silk',  # Optional: for better admin interface django-silk
+    'drf_spectacular', # Optional: for OpenAPI schema generation
 ]
 
 MIDDLEWARE = [
@@ -142,5 +143,15 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication', # JWT Authentication from djangorestframework-simplejwt
         'rest_framework.authentication.SessionAuthentication',
-    ]
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema', # Use drf-spectacular for OpenAPI schema generation
+}
+
+# drf-spectacular settings
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'E-commerce API',
+    'DESCRIPTION': 'API for E-commerce platform',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
 }
