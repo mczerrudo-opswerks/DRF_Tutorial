@@ -1,5 +1,24 @@
-GET http://localhost:8000/products/ HTTP/1.1
+GET http://localhost:8000/products/2/ HTTP/1.1
 Host: localhost:8000
+
+###
+
+PUT http://localhost:8000/products/2/ HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0OTgwMjgxLCJpYXQiOjE3NTQ5Nzk5ODIsImp0aSI6IjZlNGU0MjkwMjVlNzQ0MDM5N2I0OGNkNWNiZTQwMDkzIiwidXNlcl9pZCI6IjEifQ.1yqRZB--sTZ9Qir3btvnZx2enX8Cr5wyVfazu6kLdl8
+
+{
+    "name": "Updated Product",
+    "price": 29.99,
+    "stock": 150,
+    "description": "An updated product description"
+}
+
+###
+DELETE http://localhost:8000/products/2/ HTTP/1.1
+Host: localhost:8000
+
 
 ### This File uses the VS Code extension REST Client
 
@@ -25,7 +44,18 @@ Content-Type: application/json
     "password": "test"
 }
 
+### Gets a new access token using the refresh token
+
+POST http://localhost:8000/api/token/refresh/ HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+
+{
+    "refresh" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1NTA2NTYxOCwiaWF0IjoxNzU0OTc5MjE4LCJqdGkiOiJiMGVlYzFmYmFkMzY0ZDRmYmJhMDZkMDFmNjEyOTljNyIsInVzZXJfaWQiOiIxIn0.k_RxWHD2EwC-bklpZnDrAhCJlATjONte5qCDQogLGKk"
+}
+
 ###
+
 GET http://localhost:8000/user-orders/ HTTP/1.1
 Host: localhost:8000
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0OTc5MDA5LCJpYXQiOjE3NTQ5Nzg3MDksImp0aSI6IjcyN2E5MTg1NjE0NTQ0ZmE5OTY3NzhhYzZiMzk1MzZmIiwidXNlcl9pZCI6IjEifQ.9VcShNYKgrGcsG_tyHxv52LBxJy_LB8QhSDWHbVndjQ

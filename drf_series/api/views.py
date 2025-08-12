@@ -30,7 +30,7 @@ class ProductListCreateAPIView(generics.ListCreateAPIView):
 
 
 # Class based views for product detail
-class ProductDetailAPIView(generics.RetrieveAPIView):
+class ProductDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve a product by its ID
     """
@@ -38,6 +38,11 @@ class ProductDetailAPIView(generics.RetrieveAPIView):
     serializer_class = ProductSerializer
     lookup_url_kwarg = 'product_id' # Use this if you don't use pk in the URL
 
+    def get_permissions(self):
+        self.permission_classes = [AllowAny]
+        if self.request.method in ['PUT','PATCH', 'DELETE']:
+            self.permission_classes = [IsAdminUser]
+        return super().get_permissions()
 
 # # Create your views here.
 # @api_view(['GET'])
