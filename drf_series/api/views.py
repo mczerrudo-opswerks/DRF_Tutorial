@@ -1,21 +1,20 @@
 from django.db.models import Max
-from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
-from api.models import Product, Order, OrderItem
-from api.serializers import ProductSerializer, OrderSerializer, ProductInfoSerializer
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework import generics
-from rest_framework.permissions import (
-    IsAuthenticated,
-    IsAdminUser,
-    AllowAny,
-)
-from rest_framework.views import APIView
-from api.filters import ProductFilter, InStockFilterBackend
-from rest_framework import filters, viewsets
+from django.shortcuts import get_object_or_404, render
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination
+from rest_framework import filters, generics, viewsets
+from rest_framework.decorators import api_view, action
+from rest_framework.pagination import (LimitOffsetPagination,
+                                       PageNumberPagination)
+from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from api.filters import InStockFilterBackend, OrderFilter, ProductFilter
+from api.models import Order, OrderItem, Product
+from api.serializers import (OrderSerializer, ProductInfoSerializer,
+                             ProductSerializer)
+
 
 # Class based views for product list and create
 class ProductListCreateAPIView(generics.ListCreateAPIView):
@@ -75,15 +74,33 @@ class ProductDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
 #     serializer = ProductSerializer(product)
 #     return Response(serializer.data, 200)  # HTTP 200 OK
 
+
+
 class OrderViewSet(viewsets.ModelViewSet):
     """
     A viewset for viewing and editing order instances.
     """
     queryset = Order.objects.prefetch_related('items__product').all()
     serializer_class = OrderSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     pagination_class = None  # Disable pagination
+    filterset_class = OrderFilter
+    filter_backends = [
+        DjangoFilterBackend, 
+    ]
 
+    # url_path so that the router understand this route
+    @action(
+            detail=False, 
+            methods= ['get'], 
+            url_path='user-orders',
+            #permission_classes = [IsAuthenticated]
+        )
+    def user_orders(self,request):
+        orders = self.get_queryset().filter(user=request.user)
+        # many=True because we're gonna pass multiple orders
+        serializer = self.get_serializer(orders,many=True)
+        return Response(serializer.data)
 
 # class OrderListAPIView(generics.ListAPIView):
 #     """
