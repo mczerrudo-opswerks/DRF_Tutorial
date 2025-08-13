@@ -41,6 +41,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
         )
 
 class OrderSerializer(serializers.ModelSerializer):
+    order_id = serializers.UUIDField(read_only=True)  # read_only means this field is not required for input, but will be included in output
     # read_only means this field is not required for input, but will be included in output
     # 'items' is a related name for the OrderItem model
     items = OrderItemSerializer(many=True, read_only=True)
