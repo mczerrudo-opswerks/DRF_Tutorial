@@ -40,8 +40,8 @@ Host: localhost:8000
 Content-Type: application/json
 
 {
-    "username": "admin1",
-    "password": "1234"
+    "username": "admin",
+    "password": "test"
 }
 
 ### Gets a new access token using the refresh token
@@ -64,3 +64,22 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY
 GET http://localhost:8000/orders/cd856841-d846-4034-bfb4-cbbd0f14905e/ HTTP/1.1
 Host: localhost:8000
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MDU3MTQ1LCJpYXQiOjE3NTUwNTY4NDUsImp0aSI6IjhjYTRiZmQ0NmI2MDQ3Nzc5NGU1M2ZkZjI1ZTc0ZWU5IiwidXNlcl9pZCI6IjIifQ.e9La8ei-wulRyIJ-rQpowDDP4b5d_5Ukm1-G3reK3m8
+
+###
+POST http://localhost:8000/orders/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MDgwNzM2LCJpYXQiOjE3NTUwODA0MzYsImp0aSI6IjU3YThlOWNhNmZiODRlM2ViYjg2ZWExZjU0ZTRkOGRkIiwidXNlcl9pZCI6IjEifQ.Y75I_pu-2QV16BWRcEBTbCDxWSp4DRpxiqutmqLfqsM
+
+{
+	"status": "pending",
+	"items": [
+		{
+				"product": 2,
+				"quantity": 2
+		},
+		{
+				"product": 3,
+				"quantity": 1
+		}
+	]	
+}

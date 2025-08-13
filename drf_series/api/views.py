@@ -13,7 +13,7 @@ from rest_framework.views import APIView
 from api.filters import InStockFilterBackend, OrderFilter, ProductFilter
 from api.models import Order, OrderItem, Product
 from api.serializers import (OrderSerializer, ProductInfoSerializer,
-                             ProductSerializer)
+                             ProductSerializer, OrderCreateSerializer)
 
 
 # Class based views for product list and create
@@ -88,6 +88,20 @@ class OrderViewSet(viewsets.ModelViewSet):
     filter_backends = [
         DjangoFilterBackend, 
     ]
+
+    # Override the perform_create, if you want to pass custom data to the serializer
+    def perform_create(self, serializer):
+        serializer.save(user = self.request.user)
+
+    # Override the serializer to pick what serializer depending on the action or method
+    def get_serializer_class(self):
+        # can also check if POST: if self.request.method == 'POST'
+        print(self.action)
+        
+        if self.action == 'create':
+            print("hello") 
+            return OrderCreateSerializer
+        return super().get_serializer_class()
 
     def get_queryset(self):
         qs = super().get_queryset()
