@@ -40,8 +40,8 @@ Host: localhost:8000
 Content-Type: application/json
 
 {
-    "username": "admin",
-    "password": "test"
+    "username": "admin1",
+    "password": "1234"
 }
 
 ### Gets a new access token using the refresh token
@@ -60,3 +60,7 @@ GET http://localhost:8000/user-orders/ HTTP/1.1
 Host: localhost:8000
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0OTc5MDA5LCJpYXQiOjE3NTQ5Nzg3MDksImp0aSI6IjcyN2E5MTg1NjE0NTQ0ZmE5OTY3NzhhYzZiMzk1MzZmIiwidXNlcl9pZCI6IjEifQ.9VcShNYKgrGcsG_tyHxv52LBxJy_LB8QhSDWHbVndjQ
 
+###
+GET http://localhost:8000/orders/cd856841-d846-4034-bfb4-cbbd0f14905e/ HTTP/1.1
+Host: localhost:8000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MDU3MTQ1LCJpYXQiOjE3NTUwNTY4NDUsImp0aSI6IjhjYTRiZmQ0NmI2MDQ3Nzc5NGU1M2ZkZjI1ZTc0ZWU5IiwidXNlcl9pZCI6IjIifQ.e9La8ei-wulRyIJ-rQpowDDP4b5d_5Ukm1-G3reK3m8
