@@ -19,6 +19,7 @@ from api.serializers import (OrderSerializer, ProductInfoSerializer,
                              ProductSerializer, OrderCreateSerializer, UserSerializer)
 
 from rest_framework.throttling import ScopedRateThrottle
+from api.tasks import send_order_confirmation_email
 # Class based views for product list and create
 class ProductListCreateAPIView(generics.ListCreateAPIView):
     """
@@ -113,7 +114,10 @@ class OrderViewSet(viewsets.ModelViewSet):
 
     # Override the perform_create, if you want to pass custom data to the serializer
     def perform_create(self, serializer):
-        serializer.save(user = self.request.user)
+        order = serializer.save(user = self.request.user)
+        # Celery Task
+        send_order_confirmation_email.delay(order.order_id,self.request.user.email)
+
 
     # Override the serializer to pick what serializer depending on the action or method
     def get_serializer_class(self):
