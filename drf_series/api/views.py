@@ -1,4 +1,6 @@
 from django.db.models import Max
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from django_filters.rest_framework import DjangoFilterBackend
@@ -41,6 +43,16 @@ class ProductListCreateAPIView(generics.ListCreateAPIView):
     pagination_class.page_query_param = 'pagenum'  # Optional: Set query param for pagination
     pagination_class.page_size_query_param = 'page_size'  # Optional: Allow client to set page size
     pagination_class.max_page_size = 6  # Optional: Set max page size
+
+    # Caching 
+    @method_decorator(cache_page(60 * 15, key_prefix = 'product_list'))
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
+    
+    def get_queryset(self):
+        import time
+        time.sleep(2)
+        return super().get_queryset()
 
     # Customizing permissions in a Generic View
     def get_permissions(self):
