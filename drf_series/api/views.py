@@ -98,7 +98,7 @@ class OrderViewSet(viewsets.ModelViewSet):
         # can also check if POST: if self.request.method == 'POST'
         print(self.action)
         
-        if self.action == 'create':
+        if self.action == 'create' or self.action == 'update':
             print("hello") 
             return OrderCreateSerializer
         return super().get_serializer_class()
