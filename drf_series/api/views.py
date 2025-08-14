@@ -15,12 +15,14 @@ from api.models import Order, OrderItem, Product, User
 from api.serializers import (OrderSerializer, ProductInfoSerializer,
                              ProductSerializer, OrderCreateSerializer, UserSerializer)
 
-
+from rest_framework.throttling import ScopedRateThrottle
 # Class based views for product list and create
 class ProductListCreateAPIView(generics.ListCreateAPIView):
     """
     List all products and create a new product
     """
+    throttle_scope = 'products' # can be found in the setting.py
+    throttle_classes = [ScopedRateThrottle]
     queryset = Product.objects.order_by('pk')
     serializer_class = ProductSerializer
     filterset_class = ProductFilter
@@ -80,6 +82,7 @@ class OrderViewSet(viewsets.ModelViewSet):
     """
     A viewset for viewing and editing order instances.
     """
+    throttle_scope = 'orders'
     queryset = Order.objects.prefetch_related('items__product').all()
     serializer_class = OrderSerializer
     permission_classes = [IsAuthenticated]
