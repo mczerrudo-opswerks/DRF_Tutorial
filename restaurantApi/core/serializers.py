@@ -3,6 +3,7 @@ from rest_framework import serializers
 from core.models import Restaurant, MenuItem, Order, OrderItem, Review
 from django.db import transaction
 from django.db.models import Sum, F
+from rest_framework.validators import UniqueTogetherValidator
 
 class MenuItemSerializer(serializers.ModelSerializer):
     # SerializerMethodField is read-only
@@ -105,11 +106,10 @@ class OrderCreateSerializer(serializers.ModelSerializer):
             'status',
             'items',
         )
-        extra_kwargs = {
-            'user': {'read_only': True}
-        }
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = ("id","user","restaurant","rating","comment","created_at")
-        read_only_fields = ("user","created_at")
+        extra_kwargs = {
+            'user': {'read_only': True}
+        }

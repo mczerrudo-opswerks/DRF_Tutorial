@@ -88,8 +88,20 @@ class OrderViewSet(viewsets.ModelViewSet):
 class ReviewViewSet(viewsets.ModelViewSet):
     serializer_class = ReviewSerializer
     permission_classes = [permissions.IsAuthenticated]
+    queryset = Review.objects.select_related("restaurant","user")
+
     def get_queryset(self):
-        return Review.objects.select_related("restaurant","user")
+        qs = super().get_queryset()
+        if self.request.method in ['PUT','PATCH', 'DELETE']:
+            return qs.filter(user=self.request.user)
+        return qs
+    
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        restaurant = serializer.validated_data.get("restaurant")
+        user = self.request.user
+
+        if Review.objects.filter(user=user, restaurant=restaurant).exists():
+            raise PermissionDenied("You have already reviewed this restaurant.")
+
+        serializer.save(user=user)
 
