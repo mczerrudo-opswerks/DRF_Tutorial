@@ -1415,3 +1415,457 @@ Traceback (most recent call last):
     raise ValidationError(self.errors)
 rest_framework.exceptions.ValidationError: {'non_field_errors': [ErrorDetail(string="Menu item 'Carbonara Pasta' does not belong to the selected restaurant.", code='invalid')]}
 [INFO] 2025-08-15 14:11:38,905 restaurantAPI Restaurant created: 7fb975f8-41cd-4586-a391-6633a453a448 by customer1
+[ERROR] 2025-08-15 14:45:58,542 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=None path=/menu_item/ payload={'restaurant': 1, 'name': 'Burger', 'price': '150.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\db\models\base.py", line 891, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\db\models\base.py", line 1012, in save_base
+    post_save.send(
+    ~~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        using=using,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\restaurantApi\core\signals.py", line 15, in invalidate_menu_cache
+    cache.delete_pattern('*menu_list*')
+    ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\utils\connection.py", line 15, in __getattr__
+    return getattr(self._connections[self._alias], item)
+AttributeError: 'LocMemCache' object has no attribute 'delete_pattern'
+[ERROR] 2025-08-15 14:45:58,561 django.request Internal Server Error: /menu_item/
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 208, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 989, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\db\models\base.py", line 891, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\db\models\base.py", line 1012, in save_base
+    post_save.send(
+    ~~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        using=using,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\restaurantApi\core\signals.py", line 15, in invalidate_menu_cache
+    cache.delete_pattern('*menu_list*')
+    ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\utils\connection.py", line 15, in __getattr__
+    return getattr(self._connections[self._alias], item)
+AttributeError: 'LocMemCache' object has no attribute 'delete_pattern'
+[ERROR] 2025-08-15 14:49:48,554 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=1 path=/menu_item/ payload={'restaurant': 1, 'name': 'Cheap', 'price': '-1.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'price': [ErrorDetail(string='Ensure this value is greater than or equal to 0.00.', code='min_value')]}
+[ERROR] 2025-08-15 14:52:35,271 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=1 path=/menu_item/ payload={'restaurant': 1, 'name': 'Cheap', 'price': '-1.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'price': [ErrorDetail(string='Ensure this value is greater than or equal to 0.00.', code='min_value')]}
+[ERROR] 2025-08-15 14:53:08,157 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=1 path=/menu_item/ payload={'restaurant': 1, 'name': 'Cheap', 'price': '-1.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'price': [ErrorDetail(string='Ensure this value is greater than or equal to 0.00.', code='min_value')]}
+[ERROR] 2025-08-15 14:53:10,232 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=5 path=/menu_item/ payload={'restaurant': 5, 'name': 'Soda', 'price': '60.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'non_field_errors': [ErrorDetail(string='The fields restaurant, name must make a unique set.', code='unique')]}
+[ERROR] 2025-08-15 14:54:08,589 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=1 path=/menu_item/ payload={'restaurant': 1, 'name': 'Cheap', 'price': '-1.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'price': [ErrorDetail(string='Ensure this value is greater than or equal to 0.00.', code='min_value')]}
+[ERROR] 2025-08-15 14:54:11,891 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=7 path=/menu_item/ payload={'restaurant': 7, 'name': 'Soda', 'price': '60.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'non_field_errors': [ErrorDetail(string='The fields restaurant, name must make a unique set.', code='unique')]}
+[ERROR] 2025-08-15 15:01:08,581 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=1 path=/menu_item/ payload={'restaurant': 1, 'name': 'Cheap', 'price': '-1.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'price': [ErrorDetail(string='Ensure this value is greater than or equal to 0.00.', code='min_value')]}
+[ERROR] 2025-08-15 15:01:09,416 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=None path=/menu_item/ payload={'restaurant': 3, 'name': 'Burger', 'price': '150.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 333, in check_permissions
+    self.permission_denied(
+    ~~~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+        message=getattr(permission, 'message', None),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        code=getattr(permission, 'code', None)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 174, in permission_denied
+    raise exceptions.NotAuthenticated()
+rest_framework.exceptions.NotAuthenticated: Authentication credentials were not provided.
+[ERROR] 2025-08-15 15:01:10,619 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=6 path=/menu_item/ payload={'restaurant': 5, 'name': 'Hack', 'price': '10.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\restaurantApi\core\views.py", line 44, in perform_create
+    raise PermissionDenied("You can only add menu items to your own restaurant.")
+rest_framework.exceptions.PermissionDenied: You can only add menu items to your own restaurant.
+[ERROR] 2025-08-15 15:01:13,156 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=9 path=/menu_item/ payload={'restaurant': 9, 'name': 'Soda', 'price': '60.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'non_field_errors': [ErrorDetail(string='The fields restaurant, name must make a unique set.', code='unique')]}
+[ERROR] 2025-08-15 15:03:07,488 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=1 path=/menu_item/ payload={'restaurant': 1, 'name': 'Cheap', 'price': '-1.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'price': [ErrorDetail(string='Ensure this value is greater than or equal to 0.00.', code='min_value')]}
+[ERROR] 2025-08-15 15:03:09,951 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=6 path=/menu_item/ payload={'restaurant': 5, 'name': 'Hack', 'price': '10.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\restaurantApi\core\views.py", line 44, in perform_create
+    raise PermissionDenied("You can only add menu items to your own restaurant.")
+rest_framework.exceptions.PermissionDenied: You can only add menu items to your own restaurant.
+[ERROR] 2025-08-15 15:03:12,384 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=9 path=/menu_item/ payload={'restaurant': 9, 'name': 'Soda', 'price': '60.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'non_field_errors': [ErrorDetail(string='The fields restaurant, name must make a unique set.', code='unique')]}
+[ERROR] 2025-08-15 15:03:33,644 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=1 path=/menu_item/ payload={'restaurant': 1, 'name': 'Cheap', 'price': '-1.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'price': [ErrorDetail(string='Ensure this value is greater than or equal to 0.00.', code='min_value')]}
+[ERROR] 2025-08-15 15:03:36,121 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=6 path=/menu_item/ payload={'restaurant': 5, 'name': 'Hack', 'price': '10.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\restaurantApi\core\views.py", line 44, in perform_create
+    raise PermissionDenied("You can only add menu items to your own restaurant.")
+rest_framework.exceptions.PermissionDenied: You can only add menu items to your own restaurant.
+[ERROR] 2025-08-15 15:03:38,588 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=9 path=/menu_item/ payload={'restaurant': 9, 'name': 'Soda', 'price': '60.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'non_field_errors': [ErrorDetail(string='The fields restaurant, name must make a unique set.', code='unique')]}
+[ERROR] 2025-08-15 15:13:35,226 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=1 path=/menu_item/ payload={'restaurant': 1, 'name': 'Cheap', 'price': '-1.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'price': [ErrorDetail(string='Ensure this value is greater than or equal to 0.00.', code='min_value')]}
+[ERROR] 2025-08-15 15:13:40,913 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=8 path=/menu_item/ payload={'restaurant': 7, 'name': 'Hack', 'price': '10.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\restaurantApi\core\views.py", line 44, in perform_create
+    raise PermissionDenied("You can only add menu items to your own restaurant.")
+rest_framework.exceptions.PermissionDenied: You can only add menu items to your own restaurant.
+[ERROR] 2025-08-15 15:13:43,355 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=11 path=/menu_item/ payload={'restaurant': 11, 'name': 'Soda', 'price': '60.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'non_field_errors': [ErrorDetail(string='The fields restaurant, name must make a unique set.', code='unique')]}
+[ERROR] 2025-08-15 15:13:50,432 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=1 path=/menu_item/ payload={'restaurant': 1, 'name': 'Cheap', 'price': '-1.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'price': [ErrorDetail(string='Ensure this value is greater than or equal to 0.00.', code='min_value')]}
+[ERROR] 2025-08-15 15:13:56,073 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=8 path=/menu_item/ payload={'restaurant': 7, 'name': 'Hack', 'price': '10.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\restaurantApi\core\views.py", line 44, in perform_create
+    raise PermissionDenied("You can only add menu items to your own restaurant.")
+rest_framework.exceptions.PermissionDenied: You can only add menu items to your own restaurant.
+[ERROR] 2025-08-15 15:13:58,524 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=11 path=/menu_item/ payload={'restaurant': 11, 'name': 'Soda', 'price': '60.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'non_field_errors': [ErrorDetail(string='The fields restaurant, name must make a unique set.', code='unique')]}
+[ERROR] 2025-08-15 15:25:46,296 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=1 path=/menu_item/ payload={'restaurant': 1, 'name': 'Cheap', 'price': '-1.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'price': [ErrorDetail(string='Ensure this value is greater than or equal to 0.00.', code='min_value')]}
+[ERROR] 2025-08-15 15:25:52,060 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=8 path=/menu_item/ payload={'restaurant': 7, 'name': 'Hack', 'price': '10.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\restaurantApi\core\views.py", line 44, in perform_create
+    raise PermissionDenied("You can only add menu items to your own restaurant.")
+rest_framework.exceptions.PermissionDenied: You can only add menu items to your own restaurant.
+[ERROR] 2025-08-15 15:25:54,680 restaurantAPI Unhandled exception in view=MenuItemListCreateAPIView user=11 path=/menu_item/ payload={'restaurant': 11, 'name': 'Soda', 'price': '60.00'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'non_field_errors': [ErrorDetail(string='The fields restaurant, name must make a unique set.', code='unique')]}
