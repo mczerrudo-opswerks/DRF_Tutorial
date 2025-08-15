@@ -2,8 +2,6 @@ from decimal import Decimal
 from rest_framework import serializers
 from core.models import Restaurant, MenuItem, Order, OrderItem, Review
 from django.db import transaction
-from django.db.models import Sum, F
-from rest_framework.validators import UniqueTogetherValidator
 
 class MenuItemSerializer(serializers.ModelSerializer):
     # SerializerMethodField is read-only
@@ -52,8 +50,7 @@ class OrderCreateSerializer(serializers.ModelSerializer):
 
     # Override the Upate
     def update(self,instance, validated_data):
-        if orderitem_data is not None:
-            orderitem_data = validated_data.pop('items')
+        orderitem_data = validated_data.pop('items')
         
         with transaction.atomic(): # something fails inside it goes back to the db goes back to its initial state
             instance = super().update(instance,validated_data)
@@ -106,6 +103,9 @@ class OrderCreateSerializer(serializers.ModelSerializer):
             'status',
             'items',
         )
+        extra_kwargs = {
+            'user': {'read_only': True}
+        }
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review

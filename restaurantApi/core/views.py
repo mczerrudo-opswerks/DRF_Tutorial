@@ -96,6 +96,10 @@ class ReviewViewSet(viewsets.ModelViewSet):
             return qs.filter(user=self.request.user)
         return qs
     
+    @method_decorator(cache_page(60 * 15, key_prefix = 'review_list')) # connected with signals.py
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
+    
     def perform_create(self, serializer):
         restaurant = serializer.validated_data.get("restaurant")
         user = self.request.user

@@ -48,7 +48,7 @@ class MenuItem(models.Model):
     class Meta:
         # There can only be one name per restaurant
         unique_together = ("restaurant", "name")
-        ordering = ["restaurant_id", "name"]
+        ordering = ["restaurant_id"]
 
     def __str__(self): 
         return f"{self.name} @ {self.restaurant.name}"
@@ -101,6 +101,7 @@ class Review(models.Model):
 
     class Meta:
         unique_together = ("user", "restaurant")
+        ordering = ["restaurant_id"]
 
     def __str__(self): 
         return f"{self.rating}★ by {self.user} @ {self.restaurant}"

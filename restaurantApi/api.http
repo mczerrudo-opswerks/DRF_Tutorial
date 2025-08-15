@@ -12,12 +12,12 @@ Content-Type: application/json
 ### Get Order
 GET http://localhost:8000/orders/ HTTP/1.1
 Host: localhost:8000
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MjM0Njk5LCJpYXQiOjE3NTUyMzEwOTksImp0aSI6IjljNWM2ODc2ZDc4NzQwMmNhZWQ3NTI3NzkyMjNhZDlkIiwidXNlcl9pZCI6IjUifQ.tDdoM81Na1nlngPLGpmYyiIZUBkt9ACXgU9_o1ZOqT4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MjUwNzkwLCJpYXQiOjE3NTUyNDcxOTAsImp0aSI6IjUxN2YwZGI3ODA4NjQyYzJhZTYzZWEzYTE1ZmVlODc4IiwidXNlcl9pZCI6IjUifQ.Phtj6rBxS61oA-kylkrcyi-p1k5UrOnmfDLC0icWYF4
 
 ### Create an Order
 POST http://localhost:8000/orders/ HTTP/1.1
 Content-Type: application/json
-Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MjQxODc1LCJpYXQiOjE3NTUyMzgyNzUsImp0aSI6ImFmNWE3YTUwMGUyODQwY2U5MTg3ZmUyYTQ2ZWRhNmQzIiwidXNlcl9pZCI6IjUifQ.CgCRpG-LrZGIVFereVyCG5W67KCCBCtEk6HJwVHzQ0Y
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MjUwNzkwLCJpYXQiOjE3NTUyNDcxOTAsImp0aSI6IjUxN2YwZGI3ODA4NjQyYzJhZTYzZWEzYTE1ZmVlODc4IiwidXNlcl9pZCI6IjUifQ.Phtj6rBxS61oA-kylkrcyi-p1k5UrOnmfDLC0icWYF4
 
 {
   "restaurant": 2,
@@ -29,120 +29,25 @@ Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoi
 }
 
 ### Get an Order
-GET http://localhost:8000/orders/1ac25123-db17-4aa3-8975-0e1e57bce3d9/ HTTP/1.1
+GET http://localhost:8000/orders/9a8d34ba-fef2-4511-a089-1963cdd77082/ HTTP/1.1
 Host: localhost:8000
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MjM0Njk5LCJpYXQiOjE3NTUyMzEwOTksImp0aSI6IjljNWM2ODc2ZDc4NzQwMmNhZWQ3NTI3NzkyMjNhZDlkIiwidXNlcl9pZCI6IjUifQ.tDdoM81Na1nlngPLGpmYyiIZUBkt9ACXgU9_o1ZOqT4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MjUwNzkwLCJpYXQiOjE3NTUyNDcxOTAsImp0aSI6IjUxN2YwZGI3ODA4NjQyYzJhZTYzZWEzYTE1ZmVlODc4IiwidXNlcl9pZCI6IjUifQ.Phtj6rBxS61oA-kylkrcyi-p1k5UrOnmfDLC0icWYF4
 
 
 ### Update an Order
-PUT http://localhost:8000/orders/1ac25123-db17-4aa3-8975-0e1e57bce3d9/ HTTP/1.1
+PUT http://localhost:8000/orders/9a8d34ba-fef2-4511-a089-1963cdd77082/ HTTP/1.1
 Content-Type: application/json
-Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MjM0Njk5LCJpYXQiOjE3NTUyMzEwOTksImp0aSI6IjljNWM2ODc2ZDc4NzQwMmNhZWQ3NTI3NzkyMjNhZDlkIiwidXNlcl9pZCI6IjUifQ.tDdoM81Na1nlngPLGpmYyiIZUBkt9ACXgU9_o1ZOqT4
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MjUwNzkwLCJpYXQiOjE3NTUyNDcxOTAsImp0aSI6IjUxN2YwZGI3ODA4NjQyYzJhZTYzZWEzYTE1ZmVlODc4IiwidXNlcl9pZCI6IjUifQ.Phtj6rBxS61oA-kylkrcyi-p1k5UrOnmfDLC0icWYF4
 
 {
-  "restaurant": 3,
+  "restaurant": 2,
   "items": [
     { "menu_item": 3, "quantity": 2 },
     { "menu_item": 4, "quantity": 10 }
   ]
 }
 
-### Get an Order
-DELETE http://localhost:8000/orders/1ac25123-db17-4aa3-8975-0e1e57bce3d9/ HTTP/1.1
+### Get Reviews
+GET http://localhost:8000/reviews/ HTTP/1.1
 Host: localhost:8000
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MjM0Njk5LCJpYXQiOjE3NTUyMzEwOTksImp0aSI6IjljNWM2ODc2ZDc4NzQwMmNhZWQ3NTI3NzkyMjNhZDlkIiwidXNlcl9pZCI6IjUifQ.tDdoM81Na1nlngPLGpmYyiIZUBkt9ACXgU9_o1ZOqT4
-
-
-
-###
-
-PUT http://localhost:8000/products/2/ HTTP/1.1
-Host: localhost:8000
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0OTgwMjgxLCJpYXQiOjE3NTQ5Nzk5ODIsImp0aSI6IjZlNGU0MjkwMjVlNzQ0MDM5N2I0OGNkNWNiZTQwMDkzIiwidXNlcl9pZCI6IjEifQ.1yqRZB--sTZ9Qir3btvnZx2enX8Cr5wyVfazu6kLdl8
-
-{
-    "name": "Updated Product",
-    "price": 29.99,
-    "stock": 150,
-    "description": "An updated product description"
-}
-
-###
-DELETE http://localhost:8000/products/2/ HTTP/1.1
-Host: localhost:8000
-
-
-### This File uses the VS Code extension REST Client
-
-POST http://localhost:8000/products/ HTTP/1.1
-Host: localhost:8000
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0OTc3MTA3LCJpYXQiOjE3NTQ5NzY4MDcsImp0aSI6ImVhYWNhNjZiODQ4NTQ3ZjdiMjY3YjRmY2MyMzg3MGVmIiwidXNlcl9pZCI6IjIifQ.HgrcfqDVhPgYcYh2B427w0JN4LYO9INRenZ8G_fuA4c
-
-{
-    "name": "New Product",
-    "price": 19.99,
-    "stock": 100,
-    "description": "A brand new product"
-}
-
-### JWT Authentication
-POST http://localhost:8000/api/token/ HTTP/1.1
-Host: localhost:8000
-Content-Type: application/json
-
-{
-    "username": "admin1",
-    "password": "1234"
-}
-
-### Gets a new access token using the refresh token
-
-POST http://localhost:8000/api/token/refresh/ HTTP/1.1
-Host: localhost:8000
-Content-Type: application/json
-
-{
-    "refresh" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1NTA2NTYxOCwiaWF0IjoxNzU0OTc5MjE4LCJqdGkiOiJiMGVlYzFmYmFkMzY0ZDRmYmJhMDZkMDFmNjEyOTljNyIsInVzZXJfaWQiOiIxIn0.k_RxWHD2EwC-bklpZnDrAhCJlATjONte5qCDQogLGKk"
-}
-
-###
-
-GET http://localhost:8000/orders/ HTTP/1.1
-Host: localhost:8000
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MTYzODM0LCJpYXQiOjE3NTUxNjM1MzQsImp0aSI6IjFiMmNhZDcxNmFlODRhYjA4MWQwZTU3NDI3M2Q5YzhlIiwidXNlcl9pZCI6IjIifQ.PUo0L1-ORXQ7eu-XHF6XtvOWiLPrAP6Tkju8dDR7RLU
-
-###
-GET http://localhost:8000/orders/cd856841-d846-4034-bfb4-cbbd0f14905e/ HTTP/1.1
-Host: localhost:8000
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MTQwNzIwLCJpYXQiOjE3NTUxNDA0MjAsImp0aSI6ImFhODBhOGNiZGFlMjQxYzY5OTY5MGFjNWNiNDcxYzRiIiwidXNlcl9pZCI6IjEifQ.tXEB6dcGRdwHUAD1Z5M_iLs3QSMqrbh1h4wwoen6VDw
-
-###
-POST http://localhost:8000/orders/ HTTP/1.1
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MTcwMTE2LCJpYXQiOjE3NTUxNjY1MTYsImp0aSI6IjJlZDBhOTllMTIyOTQ2ZjFiOWU1MjQ3MzQ0MGI4ZDg4IiwidXNlcl9pZCI6IjIifQ.3Zh1PgMGVmBlEruB2w1El1G2MZjqisG2_Qj5oB2gm60
-{
-	"status": "pending",
-	"items": [
-		{
-				"product": 2,
-				"quantity": 2
-		},
-		{
-				"product": 3,
-				"quantity": 1
-		}
-	]	
-}
-
-###
-PUT http://localhost:8000/orders/cd856841-d846-4034-bfb4-cbbd0f14905e/ HTTP/1.1
-Host: localhost:8000
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MTQxNTI2LCJpYXQiOjE3NTUxNDEyMjYsImp0aSI6ImMzYjUwYzg2ZmNhYzQxOGU4ZjNlZTkzMWI2NjU4NmE3IiwidXNlcl9pZCI6IjEifQ.LcSY3dPweSXjytiOyecoHiDXoYAHxQ0WjjWL2Pdh0uI
-
-{
-	"status": "confirmed"
-	
-}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MjUwNzkwLCJpYXQiOjE3NTUyNDcxOTAsImp0aSI6IjUxN2YwZGI3ODA4NjQyYzJhZTYzZWEzYTE1ZmVlODc4IiwidXNlcl9pZCI6IjUifQ.Phtj6rBxS61oA-kylkrcyi-p1k5UrOnmfDLC0icWYF4
