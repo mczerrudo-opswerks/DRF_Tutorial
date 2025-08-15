@@ -1414,3 +1414,4 @@ Traceback (most recent call last):
   File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
     raise ValidationError(self.errors)
 rest_framework.exceptions.ValidationError: {'non_field_errors': [ErrorDetail(string="Menu item 'Carbonara Pasta' does not belong to the selected restaurant.", code='invalid')]}
+[INFO] 2025-08-15 14:11:38,905 restaurantAPI Restaurant created: 7fb975f8-41cd-4586-a391-6633a453a448 by customer1

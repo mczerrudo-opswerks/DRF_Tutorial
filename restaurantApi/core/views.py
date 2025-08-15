@@ -1,6 +1,8 @@
 import logging
+from django.utils.decorators import method_decorator
 from django.shortcuts import render
 from rest_framework import filters, generics, viewsets
+from django.views.decorators.cache import cache_page
 from core.models import Restaurant, MenuItem, Order, OrderItem, Review
 from core.serializers import (
     MenuItemSerializer,
@@ -10,16 +12,10 @@ from core.serializers import (
     ReviewSerializer
 )
 from rest_framework import permissions
+from core.tasks import send_order_created_email
 
 logger = logging.getLogger('restaurantAPI')
 
-
-# Custom Permissions
-class IsOwnerOrReadOnly(permissions.BasePermission):
-    def has_object_permission(self, request, view, obj):
-        if request.method in permissions.SAFE_METHODS: 
-            return True
-        return getattr(obj, "user_id", None) == request.user.id
 
 # Create your views here.
 
@@ -29,6 +25,16 @@ class MenuItemListCreateAPIView(generics.ListCreateAPIView):
     """
     queryset = MenuItem.objects.order_by('pk').select_related("restaurant")
     serializer_class = MenuItemSerializer
+
+    # Caching 
+    @method_decorator(cache_page(60 * 15, key_prefix = 'menu_list')) # connected with signals.py
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
+    
+    def get_queryset(self):
+        import time
+        time.sleep(2)
+        return super().get_queryset()
 
 class MenuItemRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     """
@@ -56,13 +62,14 @@ class RestaurantViewSet(viewsets.ModelViewSet):
         logger.info(f"Restaurant created: {restaurant.name} by {self.request.user}")
 
 class OrderViewSet(viewsets.ModelViewSet):
-    permission_classes = [permissions.IsAuthenticated, IsOwnerOrReadOnly]
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = OrderSerializer
     def get_queryset(self):
         return Order.objects.filter(user=self.request.user).select_related("restaurant", "user").prefetch_related("items__menu_item")   
     
     def perform_create(self, serializer):
         order = serializer.save(user=self.request.user)
+        send_order_created_email.delay(order.order_id)
         logger.info(f"Restaurant created: {order.order_id} by {self.request.user}")
 
     def get_serializer_class(self):
@@ -72,7 +79,7 @@ class OrderViewSet(viewsets.ModelViewSet):
 
 class ReviewViewSet(viewsets.ModelViewSet):
     serializer_class = ReviewSerializer
-    permission_classes = [permissions.IsAuthenticated, IsOwnerOrReadOnly]
+    permission_classes = [permissions.IsAuthenticated]
     def get_queryset(self):
         return Review.objects.select_related("restaurant","user")
     def perform_create(self, serializer):
