@@ -2718,3 +2718,137 @@ Traceback (most recent call last):
   File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\restaurantApi\core\views.py", line 44, in perform_create
     raise PermissionDenied("You can only add menu items to your own restaurant.")
 rest_framework.exceptions.PermissionDenied: You can only add menu items to your own restaurant.
+[ERROR] 2025-08-15 17:26:11,029 restaurantAPI Unhandled exception in view=ReviewViewSet user=5 path=/reviews/5/ payload={'rating': 2}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\shortcuts.py", line 86, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\db\models\query.py", line 649, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+core.models.Review.DoesNotExist: Review matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 65, in update
+    instance = self.get_object()
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 100, in get_object
+    obj = get_object_or_404(queryset, **filter_kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 19, in get_object_or_404
+    return _get_object_or_404(queryset, *filter_args, **filter_kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\shortcuts.py", line 88, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Review matches the given query.
+[ERROR] 2025-08-15 17:26:58,846 restaurantAPI Unhandled exception in view=ReviewViewSet user=5 path=/reviews/2/ payload={'rating': 2}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 67, in update
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'restaurant': [ErrorDetail(string='This field is required.', code='required')]}
+[ERROR] 2025-08-15 17:27:10,597 restaurantAPI Unhandled exception in view=ReviewViewSet user=5 path=/reviews/2/ payload={'rating': 2}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 67, in update
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'restaurant': [ErrorDetail(string='This field is required.', code='required')]}
+[ERROR] 2025-08-15 17:28:02,128 restaurantAPI Unhandled exception in view=ReviewViewSet user=2 path=/reviews/2/ payload={}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\shortcuts.py", line 86, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\db\models\query.py", line 649, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+core.models.Review.DoesNotExist: Review matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 90, in destroy
+    instance = self.get_object()
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 100, in get_object
+    obj = get_object_or_404(queryset, **filter_kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 19, in get_object_or_404
+    return _get_object_or_404(queryset, *filter_args, **filter_kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\shortcuts.py", line 88, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Review matches the given query.
+[ERROR] 2025-08-15 17:28:03,715 restaurantAPI Unhandled exception in view=ReviewViewSet user=5 path=/reviews/4/ payload={'rating': 1}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\shortcuts.py", line 86, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\db\models\query.py", line 649, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+core.models.Review.DoesNotExist: Review matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+    return self.update(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 65, in update
+    instance = self.get_object()
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 100, in get_object
+    obj = get_object_or_404(queryset, **filter_kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\generics.py", line 19, in get_object_or_404
+    return _get_object_or_404(queryset, *filter_args, **filter_kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\shortcuts.py", line 88, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Review matches the given query.
+[ERROR] 2025-08-15 17:28:05,330 restaurantAPI Unhandled exception in view=ReviewViewSet user=8 path=/reviews/ payload={'restaurant': 5, 'rating': 5}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\restaurantApi\core\views.py", line 108, in perform_create
+    raise PermissionDenied("You have already reviewed this restaurant.")
+rest_framework.exceptions.PermissionDenied: You have already reviewed this restaurant.
+[ERROR] 2025-08-15 17:28:06,945 restaurantAPI Unhandled exception in view=ReviewViewSet user=11 path=/reviews/ payload={'restaurant': 7, 'rating': 0}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'rating': [ErrorDetail(string='Ensure this value is greater than or equal to 1.', code='min_value')]}
+[ERROR] 2025-08-15 17:28:06,975 restaurantAPI Unhandled exception in view=ReviewViewSet user=11 path=/reviews/ payload={'restaurant': 7, 'rating': 6}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'rating': [ErrorDetail(string='Ensure this value is less than or equal to 5.', code='max_value')]}

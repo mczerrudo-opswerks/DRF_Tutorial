@@ -147,8 +147,15 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication', # JWT Authentication from djangorestframework-simplejwt
         'rest_framework.authentication.SessionAuthentication',
     ],
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema', # Use drf-spectacular for OpenAPI schema generation
     'EXCEPTION_HANDLER': 'core.exceptions.custom_exception_handler',
+    "DEFAULT_THROTTLE_CLASSES": [
+        "rest_framework.throttling.AnonRateThrottle",   
+        "rest_framework.throttling.UserRateThrottle",  
+    ],
+    "DEFAULT_THROTTLE_RATES": {
+        "anon": "5/min",   # anonymous users
+        "user": "6/min",   # authenticated users
+    },
 }
 
 # Access Token and Refresh Token Deadline
@@ -206,13 +213,11 @@ LOGGING = {
         },
     },
     'loggers': {
-        # your app logs (example: core)
         'restaurantAPI': {
             'handlers': ['console', 'file'],
             'level': 'DEBUG',
             'propagate': False,
         },
-        # Django's default request logger (500 errors, etc.)
         'django.request': {
             'handlers': ['console', 'file'],
             'level': 'ERROR',

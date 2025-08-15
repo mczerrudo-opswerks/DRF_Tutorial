@@ -17,7 +17,7 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()
 
 
-# ---- Windows-friendly defaults (avoid prefork on Windows) ----
+# For Windows
 if os.name == "nt":
-    app.conf.worker_pool = "solo"        # same as: celery ... -P solo
+    app.conf.worker_pool = "solo"       
     app.conf.worker_concurrency = 1

@@ -51,3 +51,19 @@ Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoi
 GET http://localhost:8000/reviews/ HTTP/1.1
 Host: localhost:8000
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MjUwNzkwLCJpYXQiOjE3NTUyNDcxOTAsImp0aSI6IjUxN2YwZGI3ODA4NjQyYzJhZTYzZWEzYTE1ZmVlODc4IiwidXNlcl9pZCI6IjUifQ.Phtj6rBxS61oA-kylkrcyi-p1k5UrOnmfDLC0icWYF4
+
+### Get 1 Reviews
+GET http://localhost:8000/reviews/2/ HTTP/1.1
+Host: localhost:8000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MjUwNzkwLCJpYXQiOjE3NTUyNDcxOTAsImp0aSI6IjUxN2YwZGI3ODA4NjQyYzJhZTYzZWEzYTE1ZmVlODc4IiwidXNlcl9pZCI6IjUifQ.Phtj6rBxS61oA-kylkrcyi-p1k5UrOnmfDLC0icWYF4
+
+### Get Reviews
+PATCH http://localhost:8000/reviews/2/ HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MjUwNzkwLCJpYXQiOjE3NTUyNDcxOTAsImp0aSI6IjUxN2YwZGI3ODA4NjQyYzJhZTYzZWEzYTE1ZmVlODc4IiwidXNlcl9pZCI6IjUifQ.Phtj6rBxS61oA-kylkrcyi-p1k5UrOnmfDLC0icWYF4
+
+{
+  "rating": 2
+  
+}
