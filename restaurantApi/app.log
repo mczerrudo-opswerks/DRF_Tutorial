@@ -1,0 +1,1416 @@
+[INFO] 2025-08-15 11:26:18,365 restaurantAPI Hello
+[ERROR] 2025-08-15 11:26:46,605 restaurantAPI Unhandled exception in view=RestaurantViewSet user=1 path=/restaurants/ payload=<QueryDict: {'csrfmiddlewaretoken': ['bR6GhgiSHnHXk8KnPLf0DAA5nZXcGnwtXjDYFlKItPKUdBWY4ZmqrYHHMAyST1C0'], 'name': ['Admin Store'], 'address': ['Internet']}>
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'name': [ErrorDetail(string='restaurant with this name already exists.', code='unique')]}
+[INFO] 2025-08-15 11:29:09,546 restaurantAPI Restaurant created: Second Store by admin
+[INFO] 2025-08-15 11:32:09,778 restaurantAPI Hello
+[ERROR] 2025-08-15 11:32:10,796 restaurantAPI Unhandled exception in view=OrderViewSet user=1 path=/orders/ payload={}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\restaurantApi\core\views.py", line 63, in get_queryset
+    .prefetch_related(Prefetch("items", queryset=OrderItem.objects.select_related("menu_item")))
+                      ^^^^^^^^
+NameError: name 'Prefetch' is not defined
+[ERROR] 2025-08-15 11:32:10,822 django.request Internal Server Error: /orders/
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 38, in list
+    queryset = self.filter_queryset(self.get_queryset())
+                                    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\restaurantApi\core\views.py", line 63, in get_queryset
+    .prefetch_related(Prefetch("items", queryset=OrderItem.objects.select_related("menu_item")))
+                      ^^^^^^^^
+NameError: name 'Prefetch' is not defined
+[ERROR] 2025-08-15 11:43:01,089 restaurantAPI Unhandled exception in view=OrderViewSet user=1 path=/orders/ payload={}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 523, in to_representation
+    for field in fields:
+                 ^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+                 ^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+                      ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1079, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1175, in get_field_names
+    assert field_name in fields, (
+           ^^^^^^^^^^^^^^^^^^^^
+AssertionError: The field 'items' was declared on serializer OrderSerializer, but has not been included in the 'fields' option.
+[ERROR] 2025-08-15 11:43:01,124 django.request Internal Server Error: /orders/
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 523, in to_representation
+    for field in fields:
+                 ^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+                 ^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+                      ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1079, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1175, in get_field_names
+    assert field_name in fields, (
+           ^^^^^^^^^^^^^^^^^^^^
+AssertionError: The field 'items' was declared on serializer OrderSerializer, but has not been included in the 'fields' option.
+[ERROR] 2025-08-15 11:43:14,907 restaurantAPI Unhandled exception in view=OrderViewSet user=1 path=/orders/ payload={}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 538, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 523, in to_representation
+    for field in fields:
+                 ^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+                 ^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+                      ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ~~~~~~~~~~~~~~~~^
+        source, info, model, depth
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+    ...<2 lines>...
+    )
+django.core.exceptions.ImproperlyConfigured: Field name `qty` is not valid for model `OrderItem` in `core.serializers.OrderItemReadSerializer`.
+[ERROR] 2025-08-15 11:43:14,936 django.request Internal Server Error: /orders/
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 538, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 523, in to_representation
+    for field in fields:
+                 ^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+                 ^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+                      ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ~~~~~~~~~~~~~~~~^
+        source, info, model, depth
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+    ...<2 lines>...
+    )
+django.core.exceptions.ImproperlyConfigured: Field name `qty` is not valid for model `OrderItem` in `core.serializers.OrderItemReadSerializer`.
+[ERROR] 2025-08-15 11:43:16,282 restaurantAPI Unhandled exception in view=OrderViewSet user=1 path=/orders/ payload={}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 538, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 523, in to_representation
+    for field in fields:
+                 ^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+                 ^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+                      ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ~~~~~~~~~~~~~~~~^
+        source, info, model, depth
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+    ...<2 lines>...
+    )
+django.core.exceptions.ImproperlyConfigured: Field name `qty` is not valid for model `OrderItem` in `core.serializers.OrderItemReadSerializer`.
+[ERROR] 2025-08-15 11:43:16,306 django.request Internal Server Error: /orders/
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 538, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 523, in to_representation
+    for field in fields:
+                 ^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+                 ^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+                      ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ~~~~~~~~~~~~~~~~^
+        source, info, model, depth
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+    ...<2 lines>...
+    )
+django.core.exceptions.ImproperlyConfigured: Field name `qty` is not valid for model `OrderItem` in `core.serializers.OrderItemReadSerializer`.
+[ERROR] 2025-08-15 11:43:38,478 restaurantAPI Unhandled exception in view=OrderViewSet user=1 path=/orders/ payload={}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 538, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 523, in to_representation
+    for field in fields:
+                 ^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+                 ^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+                      ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ~~~~~~~~~~~~~~~~^
+        source, info, model, depth
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+    ...<2 lines>...
+    )
+django.core.exceptions.ImproperlyConfigured: Field name `unit_price` is not valid for model `OrderItem` in `core.serializers.OrderItemReadSerializer`.
+[ERROR] 2025-08-15 11:43:38,507 django.request Internal Server Error: /orders/
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 538, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 523, in to_representation
+    for field in fields:
+                 ^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+                 ^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+                      ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ~~~~~~~~~~~~~~~~^
+        source, info, model, depth
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+    ...<2 lines>...
+    )
+django.core.exceptions.ImproperlyConfigured: Field name `unit_price` is not valid for model `OrderItem` in `core.serializers.OrderItemReadSerializer`.
+[ERROR] 2025-08-15 11:43:51,170 restaurantAPI Unhandled exception in view=OrderViewSet user=1 path=/orders/ payload={}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 538, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 523, in to_representation
+    for field in fields:
+                 ^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+                 ^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+                      ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ~~~~~~~~~~~~~~~~^
+        source, info, model, depth
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+    ...<2 lines>...
+    )
+django.core.exceptions.ImproperlyConfigured: Field name `price` is not valid for model `OrderItem` in `core.serializers.OrderItemReadSerializer`.
+[ERROR] 2025-08-15 11:43:51,203 django.request Internal Server Error: /orders/
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 538, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 714, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 523, in to_representation
+    for field in fields:
+                 ^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 384, in _readable_fields
+    for field in self.fields.values():
+                 ^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 372, in fields
+    for key, value in self.get_fields().items():
+                      ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1103, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ~~~~~~~~~~~~~~~~^
+        source, info, model, depth
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1249, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 1367, in build_unknown_field
+    raise ImproperlyConfigured(
+    ...<2 lines>...
+    )
+django.core.exceptions.ImproperlyConfigured: Field name `price` is not valid for model `OrderItem` in `core.serializers.OrderItemReadSerializer`.
+[ERROR] 2025-08-15 11:59:22,093 restaurantAPI Unhandled exception in view=OrderViewSet user=None path=/orders/ payload={}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 333, in check_permissions
+    self.permission_denied(
+    ~~~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+        message=getattr(permission, 'message', None),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        code=getattr(permission, 'code', None)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 174, in permission_denied
+    raise exceptions.NotAuthenticated()
+rest_framework.exceptions.NotAuthenticated: Authentication credentials were not provided.
+[ERROR] 2025-08-15 12:02:22,782 restaurantAPI Unhandled exception in view=TokenObtainPairView user=None path=/api/token/ payload={'username': 'admin1', 'password': '1234'}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework_simplejwt\views.py", line 46, in post
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 445, in run_validation
+    value = self.validate(value)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework_simplejwt\serializers.py", line 73, in validate
+    data = super().validate(attrs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework_simplejwt\serializers.py", line 57, in validate
+    raise exceptions.AuthenticationFailed(
+    ...<2 lines>...
+    )
+rest_framework.exceptions.AuthenticationFailed: No active account found with the given credentials
+[ERROR] 2025-08-15 12:07:56,053 restaurantAPI Unhandled exception in view=OrderViewSet user=5 path=/orders/ payload=<QueryDict: {}>
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\parsers.py", line 66, in parse
+    return json.load(decoded_stream, parse_constant=parse_constant)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\utils\json.py", line 31, in load
+    return json.load(*args, **kwargs)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\__init__.py", line 293, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "C:\Python313\Lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ~~~~~~~~~~~~~~~~^^^
+  File "C:\Python313\Lib\json\decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Illegal trailing comma before end of object: line 7 column 17 (char 99)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 17, in create
+    serializer = self.get_serializer(data=request.data)
+                                          ^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 220, in data
+    self._load_data_and_files()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 283, in _load_data_and_files
+    self._data, self._files = self._parse()
+                              ~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 358, in _parse
+    parsed = parser.parse(stream, media_type, self.parser_context)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\parsers.py", line 68, in parse
+    raise ParseError('JSON parse error - %s' % str(exc))
+rest_framework.exceptions.ParseError: JSON parse error - Illegal trailing comma before end of object: line 7 column 17 (char 99)
+[ERROR] 2025-08-15 12:08:15,877 django.request Internal Server Error: /orders/
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 414, in initial
+    self.perform_authentication(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 324, in perform_authentication
+    request.user
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 231, in user
+    self._authenticate()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 49, in authenticate
+    validated_token = self.get_validated_token(raw_token)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 113, in get_validated_token
+    raise InvalidToken(
+    ...<4 lines>...
+    )
+rest_framework_simplejwt.exceptions.InvalidToken: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\parsers.py", line 66, in parse
+    return json.load(decoded_stream, parse_constant=parse_constant)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\utils\json.py", line 31, in load
+    return json.load(*args, **kwargs)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\__init__.py", line 293, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "C:\Python313\Lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ~~~~~~~~~~~~~~~~^^^
+  File "C:\Python313\Lib\json\decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Illegal trailing comma before end of object: line 7 column 17 (char 99)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 466, in handle_exception
+    response = exception_handler(exc, context)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\restaurantApi\core\exceptions.py", line 16, in custom_exception_handler
+    getattr(request, "data", None)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 220, in data
+    self._load_data_and_files()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 283, in _load_data_and_files
+    self._data, self._files = self._parse()
+                              ~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 358, in _parse
+    parsed = parser.parse(stream, media_type, self.parser_context)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\parsers.py", line 68, in parse
+    raise ParseError('JSON parse error - %s' % str(exc))
+rest_framework.exceptions.ParseError: JSON parse error - Illegal trailing comma before end of object: line 7 column 17 (char 99)
+[ERROR] 2025-08-15 12:10:18,749 django.request Internal Server Error: /orders/
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 414, in initial
+    self.perform_authentication(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 324, in perform_authentication
+    request.user
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 231, in user
+    self._authenticate()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 49, in authenticate
+    validated_token = self.get_validated_token(raw_token)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 113, in get_validated_token
+    raise InvalidToken(
+    ...<4 lines>...
+    )
+rest_framework_simplejwt.exceptions.InvalidToken: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\parsers.py", line 66, in parse
+    return json.load(decoded_stream, parse_constant=parse_constant)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\utils\json.py", line 31, in load
+    return json.load(*args, **kwargs)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\__init__.py", line 293, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "C:\Python313\Lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ~~~~~~~~~~~~~~~~^^^
+  File "C:\Python313\Lib\json\decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Illegal trailing comma before end of object: line 7 column 17 (char 99)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 466, in handle_exception
+    response = exception_handler(exc, context)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\restaurantApi\core\exceptions.py", line 16, in custom_exception_handler
+    getattr(request, "data", None)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 220, in data
+    self._load_data_and_files()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 283, in _load_data_and_files
+    self._data, self._files = self._parse()
+                              ~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 358, in _parse
+    parsed = parser.parse(stream, media_type, self.parser_context)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\parsers.py", line 68, in parse
+    raise ParseError('JSON parse error - %s' % str(exc))
+rest_framework.exceptions.ParseError: JSON parse error - Illegal trailing comma before end of object: line 7 column 17 (char 99)
+[ERROR] 2025-08-15 12:10:53,009 django.request Internal Server Error: /orders/
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 414, in initial
+    self.perform_authentication(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 324, in perform_authentication
+    request.user
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 231, in user
+    self._authenticate()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 49, in authenticate
+    validated_token = self.get_validated_token(raw_token)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 113, in get_validated_token
+    raise InvalidToken(
+    ...<4 lines>...
+    )
+rest_framework_simplejwt.exceptions.InvalidToken: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\parsers.py", line 66, in parse
+    return json.load(decoded_stream, parse_constant=parse_constant)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\utils\json.py", line 31, in load
+    return json.load(*args, **kwargs)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\__init__.py", line 293, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "C:\Python313\Lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ~~~~~~~~~~~~~~~~^^^
+  File "C:\Python313\Lib\json\decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Illegal trailing comma before end of object: line 7 column 17 (char 99)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 466, in handle_exception
+    response = exception_handler(exc, context)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\restaurantApi\core\exceptions.py", line 16, in custom_exception_handler
+    getattr(request, "data", None)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 220, in data
+    self._load_data_and_files()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 283, in _load_data_and_files
+    self._data, self._files = self._parse()
+                              ~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 358, in _parse
+    parsed = parser.parse(stream, media_type, self.parser_context)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\parsers.py", line 68, in parse
+    raise ParseError('JSON parse error - %s' % str(exc))
+rest_framework.exceptions.ParseError: JSON parse error - Illegal trailing comma before end of object: line 7 column 17 (char 99)
+[ERROR] 2025-08-15 12:11:20,959 restaurantAPI Unhandled exception in view=OrderViewSet user=None path=/orders/ payload={}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 414, in initial
+    self.perform_authentication(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 324, in perform_authentication
+    request.user
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 231, in user
+    self._authenticate()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 49, in authenticate
+    validated_token = self.get_validated_token(raw_token)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 113, in get_validated_token
+    raise InvalidToken(
+    ...<4 lines>...
+    )
+rest_framework_simplejwt.exceptions.InvalidToken: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[ERROR] 2025-08-15 12:11:49,833 restaurantAPI Unhandled exception in view=OrderViewSet user=None path=/orders/ payload={}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 333, in check_permissions
+    self.permission_denied(
+    ~~~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+        message=getattr(permission, 'message', None),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        code=getattr(permission, 'code', None)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 174, in permission_denied
+    raise exceptions.NotAuthenticated()
+rest_framework.exceptions.NotAuthenticated: Authentication credentials were not provided.
+[ERROR] 2025-08-15 12:12:41,746 restaurantAPI Unhandled exception in view=OrderViewSet user=5 path=/orders/ payload=<QueryDict: {}>
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\parsers.py", line 66, in parse
+    return json.load(decoded_stream, parse_constant=parse_constant)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\utils\json.py", line 31, in load
+    return json.load(*args, **kwargs)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\__init__.py", line 293, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "C:\Python313\Lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ~~~~~~~~~~~~~~~~^^^
+  File "C:\Python313\Lib\json\decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Illegal trailing comma before end of object: line 7 column 17 (char 99)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 17, in create
+    serializer = self.get_serializer(data=request.data)
+                                          ^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 220, in data
+    self._load_data_and_files()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 283, in _load_data_and_files
+    self._data, self._files = self._parse()
+                              ~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 358, in _parse
+    parsed = parser.parse(stream, media_type, self.parser_context)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\parsers.py", line 68, in parse
+    raise ParseError('JSON parse error - %s' % str(exc))
+rest_framework.exceptions.ParseError: JSON parse error - Illegal trailing comma before end of object: line 7 column 17 (char 99)
+[ERROR] 2025-08-15 12:12:59,568 restaurantAPI Unhandled exception in view=OrderViewSet user=5 path=/orders/ payload=<QueryDict: {}>
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\parsers.py", line 66, in parse
+    return json.load(decoded_stream, parse_constant=parse_constant)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\utils\json.py", line 31, in load
+    return json.load(*args, **kwargs)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\__init__.py", line 293, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "C:\Python313\Lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ~~~~~~~~~~~~~~~~^^^
+  File "C:\Python313\Lib\json\decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Illegal trailing comma before end of object: line 7 column 17 (char 99)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 17, in create
+    serializer = self.get_serializer(data=request.data)
+                                          ^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 220, in data
+    self._load_data_and_files()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 283, in _load_data_and_files
+    self._data, self._files = self._parse()
+                              ~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 358, in _parse
+    parsed = parser.parse(stream, media_type, self.parser_context)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\parsers.py", line 68, in parse
+    raise ParseError('JSON parse error - %s' % str(exc))
+rest_framework.exceptions.ParseError: JSON parse error - Illegal trailing comma before end of object: line 7 column 17 (char 99)
+[ERROR] 2025-08-15 12:13:53,548 restaurantAPI Unhandled exception in view=OrderViewSet user=5 path=/orders/ payload=<QueryDict: {}>
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\parsers.py", line 66, in parse
+    return json.load(decoded_stream, parse_constant=parse_constant)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\utils\json.py", line 31, in load
+    return json.load(*args, **kwargs)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\__init__.py", line 293, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "C:\Python313\Lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ~~~~~~~~~~~~~~~~^^^
+  File "C:\Python313\Lib\json\decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Illegal trailing comma before end of object: line 7 column 17 (char 99)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 17, in create
+    serializer = self.get_serializer(data=request.data)
+                                          ^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 220, in data
+    self._load_data_and_files()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 283, in _load_data_and_files
+    self._data, self._files = self._parse()
+                              ~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 358, in _parse
+    parsed = parser.parse(stream, media_type, self.parser_context)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\parsers.py", line 68, in parse
+    raise ParseError('JSON parse error - %s' % str(exc))
+rest_framework.exceptions.ParseError: JSON parse error - Illegal trailing comma before end of object: line 7 column 17 (char 99)
+[ERROR] 2025-08-15 12:13:54,894 restaurantAPI Unhandled exception in view=OrderViewSet user=5 path=/orders/ payload=<QueryDict: {}>
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\parsers.py", line 66, in parse
+    return json.load(decoded_stream, parse_constant=parse_constant)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\utils\json.py", line 31, in load
+    return json.load(*args, **kwargs)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\__init__.py", line 293, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "C:\Python313\Lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ~~~~~~~~~~~~~~~~^^^
+  File "C:\Python313\Lib\json\decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Illegal trailing comma before end of object: line 7 column 17 (char 99)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 17, in create
+    serializer = self.get_serializer(data=request.data)
+                                          ^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 220, in data
+    self._load_data_and_files()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 283, in _load_data_and_files
+    self._data, self._files = self._parse()
+                              ~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 358, in _parse
+    parsed = parser.parse(stream, media_type, self.parser_context)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\parsers.py", line 68, in parse
+    raise ParseError('JSON parse error - %s' % str(exc))
+rest_framework.exceptions.ParseError: JSON parse error - Illegal trailing comma before end of object: line 7 column 17 (char 99)
+[INFO] 2025-08-15 12:17:02,262 restaurantAPI Restaurant created: 6727557e-fc0e-4578-a29d-8ee79b5798e7 by customer1
+[INFO] 2025-08-15 12:17:50,087 restaurantAPI Restaurant created: ac595d3d-bc66-46eb-a246-3f79c1b3aef5 by customer1
+[ERROR] 2025-08-15 12:29:04,391 restaurantAPI Unhandled exception in view=OrderViewSet user=5 path=/orders/ payload={'restaurant': 3, 'status': 'pending', 'items': [{'menu_item': 3, 'quantity': 2}, {'menu_item': 4, 'quantity': 1}]}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'non_field_errors': [ErrorDetail(string="Menu item 'Carbonara Pasta' does not belong to the selected restaurant.", code='invalid')]}
+[INFO] 2025-08-15 12:29:51,855 restaurantAPI Restaurant created: 1ccd1993-226f-4d60-b45f-278fefa064df by customer1
+[INFO] 2025-08-15 12:29:59,711 restaurantAPI Restaurant created: 1ac25123-db17-4aa3-8975-0e1e57bce3d9 by customer1
+[ERROR] 2025-08-15 12:33:58,135 restaurantAPI Unhandled exception in view=OrderViewSet user=5 path=/orders/1ac25123-db17-4aa3-8975-0e1e57bce3d9/ payload={'restaurant': 3, 'status': 'pending', 'items': [{'menu_item': 3, 'quantity': 2}, {'menu_item': 4, 'quantity': 10}]}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 167, in http_method_not_allowed
+    raise exceptions.MethodNotAllowed(request.method)
+rest_framework.exceptions.MethodNotAllowed: Method "POST" not allowed.
+[ERROR] 2025-08-15 12:34:11,616 restaurantAPI Unhandled exception in view=OrderViewSet user=5 path=/orders/1ac25123-db17-4aa3-8975-0e1e57bce3d9/ payload={'restaurant': 3, 'status': 'pending', 'items': [{'menu_item': 3, 'quantity': 2}, {'menu_item': 4, 'quantity': 10}]}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 67, in update
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'non_field_errors': [ErrorDetail(string="Menu item 'Carbonara Pasta' does not belong to the selected restaurant.", code='invalid')]}
+[ERROR] 2025-08-15 12:34:22,161 restaurantAPI Unhandled exception in view=OrderViewSet user=5 path=/orders/1ac25123-db17-4aa3-8975-0e1e57bce3d9/ payload=<QueryDict: {}>
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\parsers.py", line 66, in parse
+    return json.load(decoded_stream, parse_constant=parse_constant)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\utils\json.py", line 31, in load
+    return json.load(*args, **kwargs)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\__init__.py", line 293, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "C:\Python313\Lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ~~~~~~~~~~~~~~~~^^^
+  File "C:\Python313\Lib\json\decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Illegal trailing comma before end of object: line 2 column 18 (char 20)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 66, in update
+    serializer = self.get_serializer(instance, data=request.data, partial=partial)
+                                                    ^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 220, in data
+    self._load_data_and_files()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 283, in _load_data_and_files
+    self._data, self._files = self._parse()
+                              ~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 358, in _parse
+    parsed = parser.parse(stream, media_type, self.parser_context)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\parsers.py", line 68, in parse
+    raise ParseError('JSON parse error - %s' % str(exc))
+rest_framework.exceptions.ParseError: JSON parse error - Illegal trailing comma before end of object: line 2 column 18 (char 20)
+[ERROR] 2025-08-15 12:34:25,982 restaurantAPI Unhandled exception in view=OrderViewSet user=5 path=/orders/1ac25123-db17-4aa3-8975-0e1e57bce3d9/ payload={'restaurant': 3}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 67, in update
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 445, in run_validation
+    value = self.validate(value)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\restaurantApi\core\serializers.py", line 92, in validate
+    menu_item_ids = [item['menu_item'].id for item in items]
+                                                      ^^^^^
+TypeError: 'NoneType' object is not iterable
+[ERROR] 2025-08-15 12:34:26,039 django.request Internal Server Error: /orders/1ac25123-db17-4aa3-8975-0e1e57bce3d9/
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 67, in update
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 445, in run_validation
+    value = self.validate(value)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\restaurantApi\core\serializers.py", line 92, in validate
+    menu_item_ids = [item['menu_item'].id for item in items]
+                                                      ^^^^^
+TypeError: 'NoneType' object is not iterable
+[ERROR] 2025-08-15 12:34:29,552 restaurantAPI Unhandled exception in view=OrderViewSet user=5 path=/orders/1ac25123-db17-4aa3-8975-0e1e57bce3d9/ payload={'restaurant': 3}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 67, in update
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 445, in run_validation
+    value = self.validate(value)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\restaurantApi\core\serializers.py", line 92, in validate
+    menu_item_ids = [item['menu_item'].id for item in items]
+                                                      ^^^^^
+TypeError: 'NoneType' object is not iterable
+[ERROR] 2025-08-15 12:34:29,573 django.request Internal Server Error: /orders/1ac25123-db17-4aa3-8975-0e1e57bce3d9/
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 67, in update
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 445, in run_validation
+    value = self.validate(value)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\restaurantApi\core\serializers.py", line 92, in validate
+    menu_item_ids = [item['menu_item'].id for item in items]
+                                                      ^^^^^
+TypeError: 'NoneType' object is not iterable
+[ERROR] 2025-08-15 12:34:38,824 restaurantAPI Unhandled exception in view=OrderViewSet user=5 path=/orders/1ac25123-db17-4aa3-8975-0e1e57bce3d9/ payload={'restaurant': 3, 'items': [{'menu_item': 3, 'quantity': 2}, {'menu_item': 4, 'quantity': 10}]}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 67, in update
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'non_field_errors': [ErrorDetail(string="Menu item 'Carbonara Pasta' does not belong to the selected restaurant.", code='invalid')]}
+[ERROR] 2025-08-15 12:35:54,656 restaurantAPI Unhandled exception in view=OrderViewSet user=5 path=/orders/1ac25123-db17-4aa3-8975-0e1e57bce3d9/ payload=<QueryDict: {}>
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\parsers.py", line 66, in parse
+    return json.load(decoded_stream, parse_constant=parse_constant)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\utils\json.py", line 31, in load
+    return json.load(*args, **kwargs)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\__init__.py", line 293, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "C:\Python313\Lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+           ~~~~~~~~~~~~~~~~^^^
+  File "C:\Python313\Lib\json\decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Illegal trailing comma before end of object: line 2 column 18 (char 20)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 66, in update
+    serializer = self.get_serializer(instance, data=request.data, partial=partial)
+                                                    ^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 220, in data
+    self._load_data_and_files()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 283, in _load_data_and_files
+    self._data, self._files = self._parse()
+                              ~~~~~~~~~~~^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\request.py", line 358, in _parse
+    parsed = parser.parse(stream, media_type, self.parser_context)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\parsers.py", line 68, in parse
+    raise ParseError('JSON parse error - %s' % str(exc))
+rest_framework.exceptions.ParseError: JSON parse error - Illegal trailing comma before end of object: line 2 column 18 (char 20)
+[ERROR] 2025-08-15 12:36:00,112 restaurantAPI Unhandled exception in view=OrderViewSet user=5 path=/orders/1ac25123-db17-4aa3-8975-0e1e57bce3d9/ payload={'restaurant': 3}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 67, in update
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 445, in run_validation
+    value = self.validate(value)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\restaurantApi\core\serializers.py", line 93, in validate
+    menu_item_ids = [item['menu_item'].id for item in items]
+                                                      ^^^^^
+TypeError: 'NoneType' object is not iterable
+[ERROR] 2025-08-15 12:36:00,137 django.request Internal Server Error: /orders/1ac25123-db17-4aa3-8975-0e1e57bce3d9/
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 67, in update
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 223, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 445, in run_validation
+    value = self.validate(value)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\restaurantApi\core\serializers.py", line 93, in validate
+    menu_item_ids = [item['menu_item'].id for item in items]
+                                                      ^^^^^
+TypeError: 'NoneType' object is not iterable
+[ERROR] 2025-08-15 12:37:35,881 restaurantAPI Unhandled exception in view=OrderViewSet user=5 path=/orders/1ac25123-db17-4aa3-8975-0e1e57bce3d9/ payload={'restaurant': 3, 'items': [{'menu_item': 3, 'quantity': 2}, {'menu_item': 4, 'quantity': 10}]}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 67, in update
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'non_field_errors': [ErrorDetail(string="Menu item 'Carbonara Pasta' does not belong to the selected restaurant.", code='invalid')]}
+[ERROR] 2025-08-15 12:37:59,103 restaurantAPI Unhandled exception in view=OrderViewSet user=5 path=/orders/1ac25123-db17-4aa3-8975-0e1e57bce3d9/ payload={'restaurant': 3, 'items': [{'menu_item': 3, 'quantity': 2}, {'menu_item': 4, 'quantity': 10}]}
+Traceback (most recent call last):
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\mixins.py", line 67, in update
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mc\Documents\OPSWERKS\drf-tutorial\venv-drf\Lib\site-packages\rest_framework\serializers.py", line 231, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'non_field_errors': [ErrorDetail(string="Menu item 'Carbonara Pasta' does not belong to the selected restaurant.", code='invalid')]}

@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import environ, os
+from datetime import timedelta
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,6 +45,7 @@ INSTALLED_APPS = [
     'core',
     'rest_framework',  # Django REST Framework
     'django_extensions',  # Optional: for additional management commands
+    'silk',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'silk.middleware.SilkyMiddleware',  # Optional: for better admin interface django-silk
 ]
 
 ROOT_URLCONF = 'restaurantApi.urls'
@@ -79,7 +84,6 @@ WSGI_APPLICATION = 'restaurantApi.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 # Load environment variables
-import environ, os
 env = environ.Env()
 environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
@@ -135,3 +139,57 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Django REST Framework settings Authentication
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication', # JWT Authentication from djangorestframework-simplejwt
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema', # Use drf-spectacular for OpenAPI schema generation
+    'EXCEPTION_HANDLER': 'core.exceptions.custom_exception_handler',
+}
+
+# Access Token and Refresh Token Deadline
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+}
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,  # keep Django default logs
+    'formatters': {
+        'verbose': {
+            'format': '[{levelname}] {asctime} {name} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {  # log to terminal
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+        'file': {  # log to file
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'app.log'),  # file path
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        # your app logs (example: core)
+        'restaurantAPI': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        # Django's default request logger (500 errors, etc.)
+        'django.request': {
+            'handlers': ['console', 'file'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    },
+}

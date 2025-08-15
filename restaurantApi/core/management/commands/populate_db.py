@@ -6,7 +6,7 @@ class Command(BaseCommand):
     help = "Seed the database with sample data"
 
     def handle(self, *args, **kwargs):
-        self.stdout.write("🚀 Starting data reset...")
+
 
         # Delete all existing data (order first to avoid foreign key errors)
         OrderItem.objects.all().delete()
@@ -90,4 +90,4 @@ class Command(BaseCommand):
             comment="Burgers are great, fries could be crispier."
         )
 
-        self.stdout.write(self.style.SUCCESS("✅ Seeding complete!"))
+
